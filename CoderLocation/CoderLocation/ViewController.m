@@ -44,6 +44,14 @@
 }
 
 - (IBAction)jiema:(UIButton *)sender {
+    
+    CLLocation *loc = [[CLLocation alloc] initWithLatitude:40.0 longitude:120.0];
+    
+    [self.geoCoder reverseGeocodeLocation:loc completionHandler:^(NSArray<CLPlacemark *> * _Nullable placemarks, NSError * _Nullable error) {
+        CLPlacemark *pl = [placemarks firstObject];
+        NSLog(@"%@",pl.name);
+    }];
+    
 }
 
 - (CLGeocoder *)geoCoder {
